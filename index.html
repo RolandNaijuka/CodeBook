@@ -17,92 +17,9 @@
     <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Work+Sans:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 
-    <style type="text/css">
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Roboto', sans-serif;
-        }
 
-        #container {
-            margin: 0 auto;
-            max-width: 1000px;
-        }
-
-        #header {
-            background-color: #EEEEEE;
-            width: 100%;
-            padding: 5px;
-            height: 40px;
-
-        }
-
-        #title {
-            font-family: 'Crimson Text', serif;
-            float: left;
-            font-weight: bold;
-            font-size: 200%;
-            padding: 3px 5px;
-        }
-
-        #title span {
-            color: gray;
-        }
-
-        #buttonContainer {
-            width: 278px;
-            margin: 0 auto;
-            position: relative;
-            bottom: -1px;
-        }
-
-        .toggleButton {
-            float: left;
-            border: 1px solid grey;
-            border-right: none;
-            font-size: 120%;
-            padding: 5px;
-        }
-
-        .active {
-            background-color: rgb(142, 189, 207);
-        }
-
-        .highlightedButton {
-            background-color: grey;
-        }
-
-        #html {
-            border-top-left-radius: 5px;
-            border-bottom-left-radius: 5px;
-        }
-
-        #output {
-            border-top-right-radius: 5px;
-            border-bottom-right-radius: 5px;
-            border-right: 1px solid grey;
-        }
-
-        textarea {
-            resize: none;
-            border-top: none;
-            border-color: grey;
-        }
-
-        .panel {
-            float: left;
-            width: 50%;
-            border-left: none;
-        }
-
-        iframe {
-            border: none;
-        }
-
-        .hidden{
-            display: none;
-        }
-    </style>
+    <!-- local css files -->
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
@@ -127,46 +44,8 @@
     </div>
 
 
-    <script type="text/javascript">
-        function outputEval(){
-            var cssVal = "<style>\\"+$("#cssPanel").val()+"\\</style>";
-            $("iframe").contents().find("html").html($("#htmlPanel").val());
-            $("iframe").contents().find("body").prepend(cssVal);
-            document.getElementById("outputPanel").contentWindow.eval($("#javascriptPanel").val());
-        }
-        
-        
-        $(".toggleButton").hover(function () {
-            $(this).addClass("highlightedButton");
-        }, function () {
-            $(this).removeClass("highlightedButton");
-        });
-        $(".toggleButton").click(function () {
-            $(this).toggleClass("active");
-            $(this).removeClass("highlightedButton");
-
-            var panelId = $(this).attr("id")+"Panel";
-            $("#"+panelId).toggleClass("hidden");
-            var numOfActive = 4 - $(".hidden").length;
-
-            $(".panel").width(($("#container").width() / numOfActive) - 10);
-
-            $(".panel").first().css("border-left","1px solid grey")
-            $(".panel").last().css("border-right","1px solid grey")
-        });
-        $(".panel").height($(window).height() - $("#header").height() - 15);
-        $(".panel").width(($("#container").width() / 2) - 10);
-        $(".panel").first().css("border-left","1px solid grey")
-        $(".panel").last().css("border-right","1px solid grey")
-        
-        outputEval();
-
-        $("textarea").on("change keyup paste", function(){
-            outputEval();
-        });
-        
-        
-    </script>
+    <!-- local js files -->
+    <script src="./js/script.js"></script>
 </body>
 
 </html>
