@@ -1,96 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
 
-        <!-- jQuery and jQuery ui -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <!-- jQuery and jQuery ui -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 
 
-        <!-- Google fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Work+Sans:400,700" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Work+Sans:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 
-        <style type="text/css">
-            body{
-                margin: 0;
-                padding: 0;
-                font-family: 'Roboto', sans-serif;
-            }
-            #container{
-                margin: 0 auto;
-                max-width: 1200px;
-            }
-            #header{
-                background-color: #EEEEEE;
-                width: 100%;
-                padding: 5px;
-                height: 30px;
-                
-            }
-            #title{
-                font-family: 'Crimson Text', serif;
-                float: left;
-                font-weight: bold;
-                font-size: 120%;
-                padding: 3px 5px;
-            }
-            #title span{
-                color: gray;
-            }
-            #buttonContainer{
-                width: 278px;
-                margin: 0 auto;
-            }
-            .toggleButton{
-                float: left;
-                border: 1px solid grey;
-                border-right: none;
-                font-size: 120%;
-                padding: 5px 5px 0px 5px;
-            }
-            #html{
-                border-top-left-radius: 5px;
-                border-bottom-left-radius: 5px;
-            }
-            #output{
-                border-top-right-radius: 5px;
-                border-bottom-right-radius: 5px;
-                border-right: 1px solid grey;
-            }
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+        }
 
-        </style>
-    </head>
-    <body>
-        <div id="container">
-            <div id="header">
-                <div id="title">code<span>Book</span></div>
-                <div id="buttonContainer">
-                    <div id="html" class="toggleButton active">HTML</div>
-                    <div id="css" class="toggleButton">CSS</div>
-                    <div id="javascript" class="toggleButton">JavaScript</div>
-                    <div id="output" class="toggleButton active">Output</div>
-                </div>
-            </div>
+        #container {
+            margin: 0 auto;
+            max-width: 1000px;
+        }
 
-            <div id="bodyContainer">
-                <textarea id="htmlPanel" class="panel"><p></p></textarea>
-            </div>
+        #header {
+            background-color: #EEEEEE;
+            width: 100%;
+            padding: 5px;
+            height: 40px;
 
+        }
+
+        #title {
+            font-family: 'Crimson Text', serif;
+            float: left;
+            font-weight: bold;
+            font-size: 200%;
+            padding: 3px 5px;
+        }
+
+        #title span {
+            color: gray;
+        }
+
+        #buttonContainer {
+            width: 278px;
+            margin: 0 auto;
+            position: relative;
+            bottom: -1px;
+        }
+
+        .toggleButton {
+            float: left;
+            border: 1px solid grey;
+            border-right: none;
+            font-size: 120%;
+            padding: 5px;
+        }
+
+        .active {
+            background-color: rgb(142, 189, 207);
+        }
+
+        .highlightedButton {
+            background-color: grey;
+        }
+
+        #html {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+
+        #output {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            border-right: 1px solid grey;
+        }
+
+        textarea {
+            resize: none;
+            border-top: none;
+            border-color: grey;
+        }
+
+        .panel {
+            float: left;
+            width: 50%;
+            border-left: none;
+        }
+
+        iframe {
+            border: none;
+        }
+
+        .hidden{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="header">
+        <div id="title">code<span>Book</span></div>
+        <div id="buttonContainer">
+            <div id="html" class="toggleButton active">HTML</div>
+            <div id="css" class="toggleButton">CSS</div>
+            <div id="javascript" class="toggleButton">JavaScript</div>
+            <div id="output" class="toggleButton active">Output</div>
+        </div>
+    </div>
+    <div id="container">
+        <div id="bodyContainer">
+            <textarea id="htmlPanel" class="panel"><p id="paragraph">Hello there!</p></textarea>
+            <textarea id="cssPanel" class="panel hidden">p{color:green;}</textarea>
+            <textarea id="javascriptPanel" class="panel hidden">document.getElementById("paragraph").innerHTML = "Hi there!";</textarea>
+            <iframe id="outputPanel" class="panel"></iframe>
         </div>
 
+    </div>
 
-        <script type="text/javascript">
-            $(".toggleButton").hover(function(){
-                $(this).css("background-color","grey");
-            }, function(){
-                $(this).css("background-color","#EEEEEE");
-            });
-        </script>
-    </body>
+
+    <script type="text/javascript">
+        function outputEval(){
+            var cssVal = "<style>\\"+$("#cssPanel").val()+"\\</style>";
+            $("iframe").contents().find("html").html($("#htmlPanel").val());
+            $("iframe").contents().find("body").prepend(cssVal);
+            document.getElementById("outputPanel").contentWindow.eval($("#javascriptPanel").val());
+        }
+        
+        
+        $(".toggleButton").hover(function () {
+            $(this).addClass("highlightedButton");
+        }, function () {
+            $(this).removeClass("highlightedButton");
+        });
+        $(".toggleButton").click(function () {
+            $(this).toggleClass("active");
+            $(this).removeClass("highlightedButton");
+
+            var panelId = $(this).attr("id")+"Panel";
+            $("#"+panelId).toggleClass("hidden");
+            var numOfActive = 4 - $(".hidden").length;
+
+            $(".panel").width(($("#container").width() / numOfActive) - 10);
+
+            $(".panel").first().css("border-left","1px solid grey")
+            $(".panel").last().css("border-right","1px solid grey")
+        });
+        $(".panel").height($(window).height() - $("#header").height() - 15);
+        $(".panel").width(($("#container").width() / 2) - 10);
+        $(".panel").first().css("border-left","1px solid grey")
+        $(".panel").last().css("border-right","1px solid grey")
+        
+        outputEval();
+
+        $("textarea").on("change keyup paste", function(){
+            outputEval();
+        });
+        
+        
+    </script>
+</body>
+
 </html>
