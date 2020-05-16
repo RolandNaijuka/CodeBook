@@ -1,5 +1,5 @@
 # codeBook
-This is a repo for a codeBook platform for coding in html, css, and javascript&nbsp;
+This is a repo for a codeBook platform for coding in html, css, and javascript<br \>
 It does not support javascript plugins such jQuery, and others.&nbsp;
 &nbsp;
 &nbsp;
